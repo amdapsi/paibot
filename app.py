@@ -6,12 +6,11 @@ import setting
 import math
 import logging
 import logging.handlers
+import json
 
 app = Flask(__name__)
 
-coincheck = ccxt.coincheck()
-coincheck.apiKey = os.environ.get("APIKEY")
-coincheck.secret = os.environ.get("SECRET")
+
 
 @app.route('/')
 def index():
@@ -20,24 +19,35 @@ def index():
 @app.route('/webhook',methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        message = request.get_data(as_text=True)
-        app.logger.info("webhook message:" + message)
+        data = request.get_json()
+        app.logger.info("webhook message:" + json.dumps(data))
 
-        balance = coincheck.fetchBalance()["info"]
-        balance_jpy = math.floor(float(balance["jpy"]))
-        balance_btc = round(float(balance["btc"]),8)
+        if data["exchange"] == "coincheck":
 
-        #Nonceを1つ増加させるため1秒停止
-        time.sleep(1)
-
-        if "buy" in message:
-            order = coincheck.create_market_buy_order('BTC/JPY',balance_jpy)
-            app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['amount'])
-            return '',200           
-        elif "sell" in message:
-            order = coincheck.create_market_sell_order('BTC/JPY',balance_btc)
-            app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['market_buy_amount'])
-            return '',200
+            coincheck = ccxt.coincheck()
+            coincheck.apiKey = os.environ.get("COINCHECK_APIKEY")
+            coincheck.secret = os.environ.get("COINCHECK_SECRET")
+            
+            balance = coincheck.fetchBalance()["info"]
+            balance_jpy = math.floor(float(balance["jpy"]))
+            balance_btc = round(float(balance["btc"]),8)
+            
+            #Nonceを1つ増加させるため1秒停止
+            time.sleep(1)
+            
+            if data["order"] == "buy":
+                btc_price = coincheck.fetchTicker("BTC/JPY")["info"]["last"]
+                amount = math.floor(btc_price * data["lot"]) 
+                order = coincheck.create_market_buy_order('BTC/JPY',amount)
+                app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['market_buy_amount'])
+                return '',200           
+            elif data["order"] == "sell":
+                amount = data["lot"] if data["lot"] > balance_btc else round(balance_btc,8)
+                order = coincheck.create_market_sell_order('BTC/JPY',amount) 
+                app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['amount'])
+                return '',200
+            else:
+                abort(400)
         else:
             abort(400)
     else:
