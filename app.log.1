@@ -1,0 +1,1234 @@
+[2021-01-23 18:12:47,842] INFO in app: webhook message:
+[2021-01-23 18:12:47,848] ERROR in app: requires `apiKey`
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 26, in webhook
+    balance = coincheck.fetchBalance()["info"]
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 121, in fetch_balance
+    balances = self.privateGetAccountsBalance(params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 485, in fetch2
+    request = self.sign(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 364, in sign
+    self.check_required_credentials()
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1243, in check_required_credentials
+    raise AuthenticationError('requires `' + key + '`')
+ccxt.base.errors.AuthenticationError: requires `apiKey`
+[2021-01-23 18:13:32,696] INFO in app: webhook message:
+[2021-01-23 18:13:32,700] ERROR in app: requires `apiKey`
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 26, in webhook
+    balance = coincheck.fetchBalance()["info"]
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 121, in fetch_balance
+    balances = self.privateGetAccountsBalance(params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 485, in fetch2
+    request = self.sign(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 364, in sign
+    self.check_required_credentials()
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1243, in check_required_credentials
+    raise AuthenticationError('requires `' + key + '`')
+ccxt.base.errors.AuthenticationError: requires `apiKey`
+[2021-01-23 18:14:36,345] INFO in app: webhook message:
+[2021-01-23 18:14:37,434] ERROR in app: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 42, in webhook
+    abort(400)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/exceptions.py", line 822, in abort
+    return _aborter(status, *args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/exceptions.py", line 807, in __call__
+    raise self.mapping[code](*args, **kwargs)
+werkzeug.exceptions.BadRequest: 400 Bad Request: The browser (or proxy) sent a request that this server could not understand.
+[2021-01-23 18:15:33,371] INFO in app: webhook message:buy
+[2021-01-23 18:15:34,489] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Market buy amount must be greater than 0\nAmount 量が足りません\nAmount 量が最低量(0.005 BTC)を下回っています"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 34, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',balance_jpy)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Market buy amount must be greater than 0\nAmount 量が足りません\nAmount 量が最低量(0.005 BTC)を下回っています"}
+[2021-01-23 18:16:05,590] INFO in app: webhook message:sell
+[2021-01-23 18:16:06,723] INFO in app: order id: 3063483313 market_sell None
+[2021-01-23 18:19:46,132] INFO in app: webhook message:sell
+[2021-01-23 18:19:47,286] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount must be greater than 0\nAmount 量が最低量(0.005 BTC)を下回っています"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 38, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',balance_btc)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount must be greater than 0\nAmount 量が最低量(0.005 BTC)を下回っています"}
+[2021-01-23 18:20:16,303] INFO in app: webhook message:buy
+[2021-01-23 18:20:17,429] INFO in app: order id: 3063490023 market_buy 64894.0
+[2021-01-23 18:20:34,639] INFO in app: webhook message:sell
+[2021-01-23 18:20:35,750] INFO in app: order id: 3063490497 market_sell 0.01940307
+[2021-01-23 19:27:46,758] ERROR in app: 405 Method Not Allowed: The method is not allowed for the requested URL.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "/usr/local/lib/python3.7/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/routing.py", line 1940, in match
+    raise MethodNotAllowed(valid_methods=list(have_match_for))
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+[2021-01-23 19:29:10,492] ERROR in app: 405 Method Not Allowed: The method is not allowed for the requested URL.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "/usr/local/lib/python3.7/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/routing.py", line 1940, in match
+    raise MethodNotAllowed(valid_methods=list(have_match_for))
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+[2021-01-23 19:31:13,212] ERROR in app: 405 Method Not Allowed: The method is not allowed for the requested URL.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1926, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1908, in raise_routing_exception
+    raise request.routing_exception
+  File "/usr/local/lib/python3.7/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/usr/local/lib/python3.7/site-packages/werkzeug/routing.py", line 1940, in match
+    raise MethodNotAllowed(valid_methods=list(have_match_for))
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+[2021-01-23 19:32:04,554] ERROR in app: can only concatenate str (not "dict") to str
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 22, in webhook
+    app.logger.info("webhook message:" + data)
+TypeError: can only concatenate str (not "dict") to str
+[2021-01-23 19:38:21,419] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-23 19:38:21,459] ERROR in app: requires `apiKey`
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 34, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 485, in fetch2
+    request = self.sign(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 364, in sign
+    self.check_required_credentials()
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1243, in check_required_credentials
+    raise AuthenticationError('requires `' + key + '`')
+ccxt.base.errors.AuthenticationError: requires `apiKey`
+[2021-01-23 19:39:11,875] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-23 19:39:12,004] INFO in app: order id: 3063628657 market_buy 33518.0
+[2021-01-23 19:40:27,421] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-23 19:40:27,547] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 34, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-23 19:40:44,303] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-23 19:40:44,407] INFO in app: order id: 3063631062 market_sell 0.01
+[2021-01-23 22:00:10,564] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-23 22:00:10,652] INFO in app: order id: 3063867984 market_buy 33606.0
+[2021-01-23 23:00:07,805] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-23 23:00:07,870] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 39, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-23 23:00:13,074] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-23 23:00:13,140] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 39, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-23 23:00:18,349] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-23 23:00:18,568] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 39, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-23 23:00:23,769] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-23 23:00:23,831] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 39, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-25 03:00:06,698] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-25 03:00:08,493] INFO in app: order id: 3067135444 market_buy 34026.0
+[2021-01-25 21:00:11,674] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-25 21:00:13,284] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-25 21:00:18,889] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-25 21:00:19,966] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-25 21:00:25,173] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-25 21:00:26,254] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-25 21:00:31,461] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-25 21:00:32,549] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-26 16:00:11,729] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-26 16:00:12,909] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-26 16:00:18,122] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-26 16:00:19,268] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-26 16:00:24,470] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-26 16:00:25,649] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-26 16:00:30,852] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-26 16:00:32,010] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-27 06:00:07,521] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-27 06:00:08,953] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-27 06:00:14,168] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-27 06:00:15,268] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-27 06:00:20,475] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-27 06:00:21,585] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-27 06:00:26,794] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-27 06:00:27,989] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-27 20:00:13,829] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-27 20:00:14,937] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-27 20:00:20,194] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-27 20:00:21,287] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-27 20:00:26,492] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-27 20:00:27,605] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-27 20:00:32,806] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-27 20:00:33,915] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-28 17:00:10,159] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-28 17:00:11,338] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-28 17:00:16,550] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-28 17:00:17,694] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-28 17:00:22,902] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-28 17:00:24,047] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-28 17:00:29,256] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-28 17:00:30,405] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-29 03:05:03,903] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-29 03:05:05,123] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-29 03:05:10,329] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-29 03:05:11,480] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-29 03:05:16,686] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-29 03:05:17,842] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-29 03:05:23,049] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "buy", "lot": 0.01}
+[2021-01-29 03:05:24,248] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 41, in webhook
+    order = coincheck.create_market_buy_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1866, in create_market_buy_order
+    return self.create_order(symbol, 'market', 'buy', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount jpy の所持金額が足りません"}
+[2021-01-29 21:00:09,631] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-29 21:00:10,715] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-29 21:00:18,610] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}
+[2021-01-29 21:00:19,708] ERROR in app: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 588, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 943, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://coincheck.com/api/exchange/orders
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "app.py", line 46, in webhook
+    order = coincheck.create_market_sell_order('BTC/JPY',amount)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 1869, in create_market_sell_order
+    return self.create_order(symbol, 'market', 'sell', amount, None, params)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 344, in create_order
+    response = self.privatePostExchangeOrders(self.extend(request, params))
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 465, in inner
+    return entry(_self, **inner_kwargs)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/coincheck.py", line 384, in request
+    response = self.fetch2(path, api, method, params, headers, body)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 486, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 605, in fetch
+    self.handle_http_status_code(http_status_code, http_status_text, url, method, http_response)
+  File "/usr/local/lib/python3.7/site-packages/ccxt/base/exchange.py", line 636, in handle_http_status_code
+    raise Exception(' '.join([self.id, method, url, string_code, http_status_text, body]))
+ccxt.base.errors.ExchangeNotAvailable: coincheck POST https://coincheck.com/api/exchange/orders 400 Bad Request {"success":false,"error":"Amount btc の所持金額が足りません"}
+[2021-01-29 21:00:24,910] INFO in app: webhook message:{"strategy": "OPPAI2020", "exchange": "coincheck", "market": "btcjpy", "order": "sell", "lot": 0.01}

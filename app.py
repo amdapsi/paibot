@@ -42,7 +42,7 @@ def webhook():
                 app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['market_buy_amount'])
                 return '',200           
             elif data["order"] == "sell":
-                amount = data["lot"] if data["lot"] > balance_btc else round(balance_btc,8)
+                amount = data["lot"] if data["lot"] < balance_btc else round(balance_btc,8)
                 order = coincheck.create_market_sell_order('BTC/JPY',amount) 
                 app.logger.info("order id: %s %s %s",order['info']['id'] , order['info']['order_type'] , order['info']['amount'])
                 return '',200
